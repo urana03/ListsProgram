@@ -2,9 +2,9 @@ package com.bridgelabz.linkedlist;
 
 public class SimpleList {
 
-	Node head;
+	 static Node head;
 	
-	static class Node{
+	 static class Node{
 		
 		int data;
 		Node next;
@@ -15,6 +15,13 @@ public class SimpleList {
 			this.next =  null;
 		}
 		
+	}
+	public void addFront(int data) {
+		
+		Node newNode = new Node(data);
+		
+		newNode.next = head;
+		head = newNode;
 	}
 	
 	public void printList() {
@@ -31,12 +38,9 @@ public class SimpleList {
 	
 		SimpleList list = new SimpleList();
 		
-		list.head = new Node(56);
-		Node second = new Node(30);
-		Node third = new Node(70);
-		
-		list.head.next = second;
-		second.next = third;
+		list.addFront(70);
+		list.addFront(30);
+		list.addFront(56);
 		
 		list.printList();
 		
