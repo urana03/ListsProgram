@@ -16,12 +16,21 @@ public class SimpleList {
 		}
 		
 	}
-	public void addFront(int data) {
+	public void append(int data) {
 		
 		Node newNode = new Node(data);
 		
-		newNode.next = head;
-		head = newNode;
+		if(head == null) {
+			head = new Node(data);
+			return;
+		}
+		newNode.next = null;
+		
+		Node last = head;
+		while(last.next != null)
+			last = last.next;
+		last.next = newNode;
+		return;
 	}
 	
 	public void printList() {
@@ -38,9 +47,9 @@ public class SimpleList {
 	
 		SimpleList list = new SimpleList();
 		
-		list.addFront(70);
-		list.addFront(30);
-		list.addFront(56);
+		list.append(56);
+		list.append(30);
+		list.append(70);
 		
 		list.printList();
 		
