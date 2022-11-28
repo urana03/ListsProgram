@@ -33,6 +33,17 @@ public class SimpleList {
 		return;
 	}
 	
+	public void insert(Node prevNode,int data) {
+		
+		if (prevNode == null) {
+			System.out.print("The previous node cannot be null");
+			return;
+		}
+		Node newNode = new Node(data);
+		newNode.next = prevNode.next;
+		prevNode.next = newNode;
+	}
+	
 	public void printList() {
 		
 		Node n = head;
@@ -48,8 +59,9 @@ public class SimpleList {
 		SimpleList list = new SimpleList();
 		
 		list.append(56);
-		list.append(30);
-		list.append(70);
+	    list.append(70);
+	    list.insert(list.head,30);
+	    
 		
 		list.printList();
 		
