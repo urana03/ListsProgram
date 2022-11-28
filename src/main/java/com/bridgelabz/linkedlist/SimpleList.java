@@ -16,54 +16,39 @@ public class SimpleList {
 		}
 		
 	}
-	public void append(int data) {
+	static Node addNode(Node headRef,int data) {
 		
-		Node newNode = new Node(data);
-		
-		if(head == null) {
-			head = new Node(data);
-			return;
-		}
-		newNode.next = null;
-		
-		Node last = head;
-		while(last.next != null)
-			last = last.next;
-		last.next = newNode;
-		return;
+		Node newNode = new Node(data);	
+		newNode.data = data;
+		newNode.next = (headRef);
+		(headRef) = newNode;
+		return headRef;
+	
 	}
 	
-	public void insert(Node prevNode,int data) {
+	static Node removeFirstNode(Node head) {
 		
-		if (prevNode == null) {
-			System.out.print("The previous node cannot be null");
-			return;
-		}
-		Node newNode = new Node(data);
-		newNode.next = prevNode.next;
-		prevNode.next = newNode;
-	}
-	
-	public void printList() {
+		if (head == null)
+			return null;
 		
-		Node n = head;
-		while(n != null) {
-			System.out.print(n.data+" ");
-			n=n.next;
-		}
+		Node temp = head;
+		head = head.next;
+		return head;
 	}
-	
 	
 	public static void main(String args[]) {
 	
-		SimpleList list = new SimpleList();
+		Node head = null;
 		
-		list.append(56);
-	    list.append(70);
-	    list.insert(list.head,30);
-	    
+		head = addNode(head,70);
+		head = addNode(head,30);
+		head = addNode(head,56);
 		
-		list.printList();
+		head = removeFirstNode(head);
+		
+		for(Node temp = head; temp != null; temp=temp.next)
+			System.out.print(temp.data+" ");
+		
 		
 	}
 }
