@@ -26,13 +26,18 @@ public class SimpleList {
 	
 	}
 	
-	static Node removeFirstNode(Node head) {
+	static Node removeLastNode(Node head) {
 		
 		if (head == null)
 			return null;
+		if(head.next == null)
+			return null;
 		
-		Node temp = head;
-		head = head.next;
+		Node secondLast = head;
+		while (secondLast.next.next != null)
+			secondLast = secondLast.next;
+		
+		secondLast.next = null;
 		return head;
 	}
 	
@@ -44,7 +49,7 @@ public class SimpleList {
 		head = addNode(head,30);
 		head = addNode(head,56);
 		
-		head = removeFirstNode(head);
+		head = removeLastNode(head);
 		
 		for(Node temp = head; temp != null; temp=temp.next)
 			System.out.print(temp.data+" ");
