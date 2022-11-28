@@ -16,44 +16,39 @@ public class SimpleList {
 		}
 		
 	}
-	static Node addNode(Node headRef,int data) {
+	static void append(int data) {
 		
-		Node newNode = new Node(data);	
-		newNode.data = data;
-		newNode.next = (headRef);
-		(headRef) = newNode;
-		return headRef;
+	             Node newNode = new Node(data);
+		         
+	             newNode.next = head;
+	             head = newNode;
 	
 	}
 	
-	static Node removeLastNode(Node head) {
+	public boolean search(Node head,int x) {
 		
-		if (head == null)
-			return null;
-		if(head.next == null)
-			return null;
-		
-		Node secondLast = head;
-		while (secondLast.next.next != null)
-			secondLast = secondLast.next;
-		
-		secondLast.next = null;
-		return head;
-	}
-	
+		      Node current = head;
+	           while(current != null) {
+			    if(current.data == x) 
+				   return true;
+				   current = current.next;
+			   }
+			   return false; 
+		}
+
 	public static void main(String args[]) {
-	
-		Node head = null;
+		SimpleList list = new SimpleList();
 		
-		head = addNode(head,70);
-		head = addNode(head,30);
-		head = addNode(head,56);
+		list.append(56);
+		list.append(30);
+		list.append(70);
 		
-		head = removeLastNode(head);
-		
-		for(Node temp = head; temp != null; temp=temp.next)
-			System.out.print(temp.data+" ");
-		
+		if(list.search(list.head,30)) {
+			System.out.print("Yes");
+		}
+		else {
+			System.out.print("No");
+		}
 		
 	}
 }
